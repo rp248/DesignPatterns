@@ -1,0 +1,53 @@
+﻿
+Abstract Factory Pattern : Using this Client can create the required objects without knowing their concrete implementation or 
+using new operator.
+
+Abstract Factory Pattern is used to hide the depenedent object creation from Client. Client object can create their dependencies without knowing their concrete implemenation.
+
+Abstract Factory Pattern is used to create families of related or dependent objects.
+Example: interface Product{}
+
+class abstarct Beverage implements Product{}
+class Coke extends Beverage{}
+class Sprite extends Beverage{}
+
+class abstract Rice implements Product{}
+class Sonamysore extends Rice {}
+class AnotherRice extends Rice {}
+
+Coke, Sprite are family of Beverage
+Sonamysore and AnotherRice are family of Rice.
+
+Beverage and Rice are related families.
+
+
+
+
+
+The key idea in this pattern is abstracting object creation from client object.
+
+Provide an interface for creating families of related or dependent  
+objects.
+AbstractFactory | createProductA() | createProductB()
+
+createProductA() and  createProductB() returns same type of objects(same family)
+
+Interface Product{}
+class ProductA implements Product{}
+class ProductB implements Product{}
+
+The process of object creation for ProductA and ProductB is abstracted(hidden) by referring to an Interface(delegating to a factory object). 
+Interface Factory{
+	createProductA();
+	createProductB();
+}
+
+
+A reusable class should not instantiate required objects directly.
+Abstarct Factory Patter allows use to write reusable code.
+
+
+
+
+Observer Pattern: Defines one-many dependency between objects. If one object changes its state, other objects will be notified and updated automatically.
+
