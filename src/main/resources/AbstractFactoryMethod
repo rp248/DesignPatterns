@@ -1,0 +1,46 @@
+Provides an interface for creating objects. Client does not need to know concrete implementation to create their
+dependent or required objects.
+Using this pattern we can create families of related objects.
+
+Class Client {
+ private ProductA obj1;
+ private ProductB obj2;
+
+ public Client() {
+    obj1 = new ProductA();
+    obj2 = new ProductB();
+ }
+
+ public void someAction() {
+    obj1.someMethod();
+    obj2.someMethod();
+ }
+}
+
+Creating object directly in the class makes hard to test. We can't mock those obj1, obj2 and hence testing is hard.
+Creating objects directly wih in the class makes it impossibly to change the instantiation later independently without
+changing the Client class.
+Specifying a class name when you create an object commits you to a particular implementation instead of a particular
+interface
+A reusable class should avoid creating the objects it requires directly (and often it doesn't know at compile-time
+which class to instantiate) so that it can request the objects it requires at runtime (from a factory object).
+
+Abstract Factory Pattern provides a solution to hide the object creation  of required objects in the Client class by
+providing an interface. Using the Provided Interface one can create families of related or dependent objects with
+knowing their concrete implementation.
+
+Abstract Factory Method provides "Encapsulation for creating objects by providing interface (factory object) ". Client
+class delegates object creation to a factory object instead of creating/instantiating concrete classes directly.
+
+The key idea in this pattern is to abstract the process of object creation. The process of object creation(new ProductA())
+is abstracted by referring to an interface, i.e factory object (factory.createProductA()).
+
+Define separate factory objects to create families of objects.
+interface AbstractFactory() {}
+
+
+AbstractFactory | createProductA(),createProductB(),…
+
+The interface (AbstractFactory) is used in Client to create its required objects ProductA, ProductB instead of
+new ProductA(), new ProductB().
+
