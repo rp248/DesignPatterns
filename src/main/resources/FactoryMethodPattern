@@ -1,0 +1,36 @@
+Factory Method Pattern defines an interface (a factoryMethod()) to create an object, but let subclasses decide
+which class to instantiate. Factory Method Pattern defers object creation to sub-classes. Sub-classes can redefine
+which class (class a, class b extends a, class c extends a, class d extends b) to instantiate.
+
+Factory Method Pattern defines an interface for creating an object, i.e., define a separate method (factory method)
+for creating the object. But lets the subclass which class to instantiate.
+Example:
+
+class abstract LanguageCreator {
+ /**
+   createLanguage() acts as factory method.
+ */
+ public abstract Language createLanguage();
+}
+
+class JavaLanguageCreator extends LanguageCreator{
+  public Language createLanguage() {
+    return new JavaLanguage();
+  }
+}
+
+class KotlinLanguageCreator extends LanguageCreator{
+  public Language createLanguage() {
+    return new KotlinLanguage();
+  }
+}
+
+People often use Factory Method as the standard way to create objects, but it isn't necessary
+when the class that's instantiated never changes.
+
+Factory Method can be implemented in three ways
+1. Abstract
+2. Concrete
+3. static factory method
+
+
